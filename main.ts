@@ -9,6 +9,9 @@ radio.onReceivedString(function (receivedString) {
 })
 function setMotor (motor: number, speed: number) {
     speed = Math.constrain(speed, -255, 255)
+    if (speed < 10 && speed > -10) {
+        speed = 0
+    }
     if (motor == enumLeftFront) {
         SuperBit.MotorRun(SuperBit.enMotors.M1, speed)
     } else if (motor == enumRightFront) {
